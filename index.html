@@ -306,9 +306,9 @@
 
                                     <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="md:hidden p-2" aria-label="Toggle menu">
                                         <div className="space-y-1.5">
-                                            <span className={`block w-6 h-0.5 bg-gray-800 transition-transform ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-                                            <span className={`block w-6 h-0.5 bg-gray-800 transition-opacity ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
-                                            <span className={`block w-6 h-0.5 bg-gray-800 transition-transform ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+                                            <span className={`block w-6 h-0.5 transition-transform ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} style={{backgroundColor: 'var(--text-primary)'}}></span>
+                                            <span className={`block w-6 h-0.5 transition-opacity ${mobileMenuOpen ? 'opacity-0' : ''}`} style={{backgroundColor: 'var(--text-primary)'}}></span>
+                                            <span className={`block w-6 h-0.5 transition-transform ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} style={{backgroundColor: 'var(--text-primary)'}}></span>
                                         </div>
                                     </button>
                                 </div>
