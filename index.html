@@ -379,6 +379,31 @@
                                                     </div>
                                                 </div>
                                             </a>
+                                        ) : project.title === "Decision Transformer Offline Reinforcement Learning" ? (
+                                            <a href="https://github.com/suyashsanjeev/dt-cartpole" target="_blank" rel="noopener noreferrer" className="block">
+                                                <div className="project-card bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl cursor-pointer group">
+                                                    <div className={`h-2 w-20 bg-gradient-to-r ${project.gradient} rounded-full mb-4 group-hover:w-full transition-all duration-500`}></div>
+                                                    <h3 className="text-xl font-semibold mb-2 stagger-child">{project.title}</h3>
+                                                    <p className="text-gray-600 mb-4 stagger-child">{project.summary}</p>
+
+                                                    <div className="space-y-2 mb-4">
+                                                        <div className="stagger-child">
+                                                            <span className="text-sm font-medium text-gray-500">Challenge:</span>
+                                                            <p className="text-sm text-gray-700">{project.challenge}</p>
+                                                        </div>
+                                                        <div className="stagger-child">
+                                                            <span className="text-sm font-medium text-gray-500">Impact:</span>
+                                                            <p className="text-sm font-semibold gradient-text">{project.impact}</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="flex flex-wrap gap-2 stagger-child">
+                                                        {project.tech.map((tech, i) => (
+                                                            <span key={i} className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">{tech}</span>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            </a>
                                         ) : (
                                             <div className="project-card bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl cursor-pointer group">
                                                 <div className={`h-2 w-20 bg-gradient-to-r ${project.gradient} rounded-full mb-4 group-hover:w-full transition-all duration-500`}></div>
