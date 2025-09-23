@@ -27,6 +27,10 @@
             --gradient-1: #3B82F6;
             --gradient-2: #8B5CF6;
             --gradient-3: #EF4444;
+            /* Image vars */
+            --badge-radius: 24px;
+            --badge-inner-radius: 20px;
+            --badge-thickness: 30px; /* visible depth */
         }
 
         * {
@@ -154,35 +158,72 @@
             width: clamp(240px, 32vw, 420px);
             aspect-ratio: 4 / 5;
         }
-        .hero-image-wrapper {
-            position: relative;
-            border-radius: 1.5rem;
-            padding: 3px;
-            background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2), var(--gradient-3));
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-            transition: transform .3s cubic-bezier(.2,.9,.2,1);
-        }
-        .hero-image-wrapper:hover { transform: translateY(-4px); }
-        .hero-image {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: cover;
-            border-radius: 1.25rem;
-            background: #fff;
-        }
-        .hero-image-overlay {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            mix-blend-mode: soft-light;
-            opacity: .35;
-            background:
-                radial-gradient(120% 80% at 10% 10%, rgba(59,130,246,.35) 0%, transparent 60%),
-                radial-gradient(120% 80% at 90% 90%, rgba(139,92,246,.35) 0%, transparent 60%),
-                radial-gradient(120% 80% at 20% 80%, rgba(239,68,68,.25) 0%, transparent 60%);
-        }
+
+        /* HyperImage*/
+        .HyperImage{display:inline-block;font-family:HyperImage Amazon Ember,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;user-drag:none}.Image{position:relative;display:block;text-align:center;font-size:2px;width:90em;height:200em;border-radius:10em;overflow:visible;transform:perspective(750em);transform-style:preserve-3d;transition:opacity .25s linear,box-shadow .5s linear 1s;z-index:5;box-shadow:0 10em 20em -8em rgba(0,0,0,.5),0 10em 20em -8em hsla(0,0%,40%,.5)}.Image *{pointer-events:none}.Image:hover{z-index:10}.Image.Blue{box-shadow:0 10em 20em -8em rgba(0,0,0,.5),0 10em 20em -8em rgba(0,153,255,.5)}.Image.Orange,.Image.Yellow{box-shadow:0 10em 20em -8em rgba(0,0,0,.5),0 10em 20em -8em rgba(255,170,0,.5)}.Image.Red{box-shadow:0 10em 20em -8em rgba(0,0,0,.5),0 10em 20em -8em rgba(221,0,17,.5)}.Image.Purple{box-shadow:0 10em 20em -8em rgba(0,0,0,.5),0 10em 20em -8em rgba(204,51,204,.5)}.Image.Silver,.Image.White{box-shadow:0 10em 20em -8em rgba(0,0,0,.5),0 10em 20em -8em hsla(0,0%,80%,.5)}.Image.Gold{box-shadow:0 10em 20em -8em rgba(0,0,0,.5),0 10em 20em -8em hsla(30,50%,60%,.5)}.Image:after{content:"";position:absolute;left:0;right:0;top:0;bottom:0;border-radius:inherit;box-shadow:inset 0 0 0 1px hsla(0,0%,100%,.1);pointer-events:none;z-index:1}.Image .Card,.Image .Confetti,.Image .Glare,.Image .Highlight{-webkit-mask-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMTgwcHgiIGhlaWdodD0iNDAwcHgiIHZpZXdCb3g9IjAgMCAxODAgNDAwIj48ZGVmcy8+PGcgaWQ9IkxheWVyXzEiPjxnIHRyYW5zZm9ybT0ibWF0cml4KCAxLCAwLCAwLCAxLCAwLDApICI+PGc+PGc+PHBhdGggZmlsbD0iIzAwMDAwMCIgc3Ryb2tlPSJub25lIiBkPSJNIDE4MCAwTCAwIDAgMCA0MDAgMTgwIDQwMCAxODAgME0gMTI2LjU1IDE5LjFRIDEyNi42NSAxOS4xNSAxMjYuOCAxOS4yNSAxMzAgMjIuNTUgMTMwIDI3IDEzMCAzMS41IDEyNi44IDM0LjcgMTI2Ljc1IDM0Ljc1IDEyNi43IDM0LjggMTIzLjUgMzggMTE5IDM4TCA2MSAzOFEgNTYuNiAzOCA1My41NSAzNS4xTCA1My41NSAzNS4wNVEgNTMuMjUgMzQuNzUgNTMuMDUgMzQuNSA1MCAzMS4zNSA1MCAyNy4xTCA1MCAyNy4wNVEgNDkuOTUgMjIuNyA1MyAxOS41TCA1Mi45NSAxOS41USA1My4yNSAxOS4xIDUzLjc1IDE4LjggNTYuOCAxNiA2MSAxNkwgMTE5IDE2USAxMjMuNCAxNiAxMjYuNTUgMTkuMSBaIi8+PC9nPjwvZz48L2c+PC9nPjwvc3ZnPg==);mask-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMTgwcHgiIGhlaWdodD0iNDAwcHgiIHZpZXdCb3g9IjAgMCAxODAgNDAwIj48ZGVmcy8+PGcgaWQ9IkxheWVyXzEiPjxnIHRyYW5zZm9ybT0ibWF0cml4KCAxLCAwLCAwLCAxLCAwLDApICI+PGc+PGc+PHBhdGggZmlsbD0iIzAwMDAwMCIgc3Ryb2tlPSJub25lIiBkPSJNIDE4MCAwTCAwIDAgMCA0MDAgMTgwIDQwMCAxODAgME0gMTI2LjU1IDE5LjFRIDEyNi42NSAxOS4xNSAxMjYuOCAxOS4yNSAxMzAgMjIuNTUgMTMwIDI3IDEzMCAzMS41IDEyNi44IDM0LjcgMTI2Ljc1IDM0Ljc1IDEyNi43IDM0LjggMTIzLjUgMzggMTE5IDM4TCA2MSAzOFEgNTYuNiAzOCA1My41NSAzNS4xTCA1My41NSAzNS4wNVEgNTMuMjUgMzQuNzUgNTMuMDUgMzQuNSA1MCAzMS4zNSA1MCAyNy4xTCA1MCAyNy4wNVEgNDkuOTUgMjIuNyA1MyAxOS41TCA1Mi45NSAxOS41USA1My4yNSAxOS4xIDUzLjc1IDE4LjggNTYuOCAxNiA2MSAxNkwgMTE5IDE2USAxMjMuNCAxNiAxMjYuNTUgMTkuMSBaIi8+PC9nPjwvZz48L2c+PC9nPjwvc3ZnPg==);-webkit-mask-size:90em 200em;mask-size:90em 200em;-webkit-mask-position:center center;mask-position:center center}.Image .Card{position:absolute;left:2em;right:2em;top:2em;bottom:2em;border-radius:8em;background-color:#000}.Image.Gray .Card{background-color:gray}.Back,.Front{position:absolute;left:0;right:0;top:0;bottom:0;border-radius:10em}.Back{transform:translateZ(-10em)}.Front{transform:translateZ(0);z-index:1}.Image:hover .Front{transform:none}.Front:after{content:"";position:absolute;left:2em;right:2em;top:2em;bottom:2em;border-radius:8em;box-shadow:inset 0 0 0 1px rgba(0,0,0,.75),inset 0 0 0 2px hsla(0,0%,100%,.1),0 0 0 1px hsla(0,0%,100%,.1)}.Image.Gray .Front:after{box-shadow:inset 0 0 0 1px rgba(0,0,0,.35),inset 0 0 0 2px hsla(0,0%,100%,.1),0 0 0 1px hsla(0,0%,100%,.1)}.HoleSides,.Sides{position:absolute;left:0;right:0;top:0;bottom:0;transform-style:preserve-3d}.HoleSides .Side,.Sides .Side{opacity:0}[data-theme] .HoleSides .Side,[data-theme] .Sides .Side{animation:fadeIn .5s linear 1s;animation-fill-mode:forwards}.HoleSides .Bottom,.HoleSides .Left,.HoleSides .Right,.HoleSides .Top,.Sides .Bottom,.Sides .Left,.Sides .Right,.Sides .Top{position:absolute}.HoleSides .Left,.HoleSides .Right,.Sides .Left,.Sides .Right{top:0;bottom:0;width:10em;clip-path:inset(10em 0);background-size:10000% 100%}.HoleSides .Left,.Sides .Left{left:0;transform-origin:0 50%;transform:rotateY(90deg);background-position:0}.HoleSides .Right,.Sides .Right{right:0;transform-origin:100% 50%;transform:rotateY(-90deg);background-position:100%}.HoleSides .Bottom,.HoleSides .Top,.Sides .Bottom,.Sides .Top{left:0;right:0;height:10em;clip-path:inset(0 10em);background-size:100% 10000%}.HoleSides .Top,.Sides .Top{top:0;transform-origin:50% 0;transform:rotateX(-90deg);background-position:top}.HoleSides .Bottom,.Sides .Bottom{bottom:0;transform-origin:50% 100%;transform:rotateX(90deg);background-position:bottom}.HoleSides .Bottom,.HoleSides .Top{clip-path:inset(0 30em)}.HoleSides .Top{top:10em;background-position:center -500em}.HoleSides .Bottom{bottom:184em;background-position:center -800em}.Border{-webkit-mask-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMTgwcHgiIGhlaWdodD0iNDAwcHgiIHZpZXdCb3g9IjAgMCAxODAgNDAwIj48ZGVmcy8+PGcgaWQ9IkxheWVyXzEiPjxnIHRyYW5zZm9ybT0ibWF0cml4KCAxLCAwLCAwLCAxLCAwLDApICI+PGc+PGc+PHBhdGggZmlsbD0iIzAwMDAwMCIgc3Ryb2tlPSJub25lIiBkPSJNIDE4MCAwTCAwIDAgMCA0MDAgMTgwIDQwMCAxODAgME0gMTI2IDI3USAxMjYgMjkuODUgMTIzLjk1IDMxLjkgMTIzLjkgMzEuOSAxMjMuOSAzMS45NSAxMjEuODUgMzQgMTE5IDM0TCA2MSAzNFEgNTguMjUgMzQgNTYuMzUgMzIuMiA1Ni4yNSAzMi4xIDU2LjIgMzIgNTYuMSAzMS45NSA1Ni4wNSAzMS45TCA1Ni4xIDMxLjkgNTYuMDUgMzEuODVRIDU0IDI5Ljg1IDU0IDI3IDU0IDI0LjI1IDU1LjkgMjIuMiA1NiAyMi4xIDU2LjEgMjIuMDUgNTYuMTUgMjIgNTYuMiAyMS45NUwgNTYuMiAyMS45USA1OC4yIDIwIDYxIDIwTCAxMTkgMjBRIDEyMS44NSAyMCAxMjMuOSAyMi4wNUwgMTIzLjkgMjIuMVEgMTI2IDI0LjE1IDEyNiAyNyBaIi8+PC9nPjwvZz48L2c+PC9nPjwvc3ZnPg==);mask-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMTgwcHgiIGhlaWdodD0iNDAwcHgiIHZpZXdCb3g9IjAgMCAxODAgNDAwIj48ZGVmcy8+PGcgaWQ9IkxheWVyXzEiPjxnIHRyYW5zZm9ybT0ibWF0cml4KCAxLCAwLCAwLCAxLCAwLDApICI+PGc+PGc+PHBhdGggZmlsbD0iIzAwMDAwMCIgc3Ryb2tlPSJub25lIiBkPSJNIDE4MCAwTCAwIDAgMCA0MDAgMTgwIDQwMCAxODAgME0gMTI2IDI3USAxMjYgMjkuODUgMTIzLjk1IDMxLjkgMTIzLjkgMzEuOSAxMjMuOSAzMS45NSAxMjEuODUgMzQgMTE5IDM0TCA2MSAzNFEgNTguMjUgMzQgNTYuMzUgMzIuMiA1Ni4yNSAzMi4xIDU2LjIgMzIgNTYuMSAzMS45NSA1Ni4wNSAzMS45TCA1Ni4xIDMxLjkgNTYuMDUgMzEuODVRIDU0IDI5Ljg1IDU0IDI3IDU0IDI0LjI1IDU1LjkgMjIuMiA1NiAyMi4xIDU2LjEgMjIuMDUgNTYuMTUgMjIgNTYuMiAyMS45NUwgNTYuMiAyMS45USA1OC4yIDIwIDYxIDIwTCAxMTkgMjBRIDEyMS44NSAyMCAxMjMuOSAyMi4wNUwgMTIzLjkgMjIuMVEgMTI2IDI0LjE1IDEyNiAyNyBaIi8+PC9nPjwvZz48L2c+PC9nPjwvc3ZnPg==);-webkit-mask-size:90em 200em;mask-size:90em 200em;-webkit-mask-position:center center;mask-position:center center}.Photo{position:absolute;left:2em;right:2em;top:auto;bottom:24em;height:115em;background-size:cover;background-position:bottom;background-repeat:no-repeat;box-shadow:inset 0 1px 0 #000,inset 0 -1px 0 #000;overflow:hidden;pointer-events:auto;opacity:0;transition:opacity .25s linear}.Image.Gray .Photo{box-shadow:inset 0 1px 0 gray,inset 0 -1px 0 gray}.Photo.On{opacity:1}.Photo:after,.Photo:before{content:"";position:absolute;height:12em}.Photo:before{display:none;left:0;right:0;top:0;bottom:auto}.Photo:after{left:0;right:0;top:0;bottom:0;height:auto;background-image:linear-gradient(180deg,#000 0,rgba(0,0,0,.986111) 1em,rgba(0,0,0,.944444) 2em,rgba(0,0,0,.875) 3em,rgba(0,0,0,.777778) 4em,rgba(0,0,0,.652778) 5em,rgba(0,0,0,.5) 6em,rgba(0,0,0,.347222) 7em,rgba(0,0,0,.222222) 8em,rgba(0,0,0,.125) 9em,rgba(0,0,0,.0555556) 10em,rgba(0,0,0,.0138889) 11em,transparent 12em),linear-gradient(0deg,#000 0,rgba(0,0,0,.840278) 1em,rgba(0,0,0,.694444) 2em,rgba(0,0,0,.5625) 3em,rgba(0,0,0,.444444) 4em,rgba(0,0,0,.340278) 5em,rgba(0,0,0,.25) 6em,rgba(0,0,0,.173611) 7em,rgba(0,0,0,.111111) 8em,rgba(0,0,0,.0625) 9em,rgba(0,0,0,.0277778) 10em,rgba(0,0,0,.00694444) 11em,transparent 12em)}.Image.Gray .Photo:after{background-image:linear-gradient(180deg,gray 0,hsla(0,0%,50%,.986111) 1em,hsla(0,0%,50%,.944444) 2em,hsla(0,0%,50%,.875) 3em,hsla(0,0%,50%,.777778) 4em,hsla(0,0%,50%,.652778) 5em,hsla(0,0%,50%,.5) 6em,hsla(0,0%,50%,.347222) 7em,hsla(0,0%,50%,.222222) 8em,hsla(0,0%,50%,.125) 9em,hsla(0,0%,50%,.0555556) 10em,hsla(0,0%,50%,.0138889) 11em,hsla(0,0%,50%,0) 12em),linear-gradient(0deg,gray 0,hsla(0,0%,50%,.840278) 1em,hsla(0,0%,50%,.694444) 2em,hsla(0,0%,50%,.5625) 3em,hsla(0,0%,50%,.444444) 4em,hsla(0,0%,50%,.340278) 5em,hsla(0,0%,50%,.25) 6em,hsla(0,0%,50%,.173611) 7em,hsla(0,0%,50%,.111111) 8em,hsla(0,0%,50%,.0625) 9em,hsla(0,0%,50%,.0277778) 10em,hsla(0,0%,50%,.00694444) 11em,hsla(0,0%,50%,0) 12em)}.CustomPhoto{position:absolute;height:96em;left:9em;right:9em;bottom:35em;background-color:#fff;background-position:50%;background-size:cover;background-repeat:no-repeat;box-shadow:0 0 0 2px #fff,0 1px 1px 2px rgba(0,0,0,.25);transition:opacity .25s linear;transform:translateZ(1px);opacity:0}.CustomPhoto.On{opacity:1;pointer-events:auto}.CustomPhoto.Hidden{display:none}.FirstName{position:absolute;left:0;right:0;top:1.66667em;height:1.1em;font-size:15em;line-height:100%;color:#fff;overflow:hidden;text-overflow:ellipsis;transform:scaleX(.9);letter-spacing:-.02em;backface-visibility:hidden}.FirstName .Fit{word-break:break-word}.LastName{display:none}.Alias,.Username{position:absolute;left:0;right:0;top:auto;bottom:0;height:2.5em;font-family:HyperImage Amazon Ember Lite,Amazon Ember,Helvetica,Arial,sans-serif;font-size:12em;line-height:2.5;color:#ccc;letter-spacing:.05em;backface-visibility:hidden;transform:scaleX(.9);transition:transform .5s linear;overflow:hidden}.Image.Gray .Alias,.Image.Gray .Username{color:#eee}.Hole{left:27em;right:27em;top:10em;bottom:auto;height:7em}.Hole,.Hole:before{position:absolute;border-radius:3.5em}.Hole:before{content:"";left:0;right:0;top:0;bottom:0;box-shadow:0 0 0 1px hsla(0,0%,100%,.1),inset 0 1px 2px rgba(0,0,0,.15),inset 0 1em 10em rgba(0,0,0,.5)}.Hole:after{content:"";position:absolute;left:-2em;right:-2em;top:-2em;bottom:-2em;border-radius:5.5em;box-shadow:0 0 0 1px rgba(0,0,0,.75),0 0 0 2px hsla(0,0%,100%,.1),inset 0 0 0 1px hsla(0,0%,100%,.1)}.Image.Gray .Hole:after{box-shadow:0 0 0 1px rgba(0,0,0,.35),0 0 0 2px hsla(0,0%,100%,.1),inset 0 0 0 1px hsla(0,0%,100%,.1)}.Border{position:absolute;left:0;right:0;top:0;bottom:0;border-radius:10em;box-shadow:inset 0 0 0 1px hsla(0,0%,100%,.1);background-color:#666;background-size:cover;background-position:50%}.Blue .Border{background-color:#09f}.Orange .Border,.Yellow .Border{background-color:#fa0}.Red .Border{background-color:#d01}.Purple .Border{background-color:#c3c}.Silver .Border,.White .Border{background-color:#ccc}.Gold .Border{background-color:#c96}[data-theme] .Border{animation:fadeOut .25s linear 1.5s;animation-fill-mode:forwards}.Border.Theme{opacity:0}.Border.Theme:after{left:20em;right:20em;top:4em;bottom:20em;background-color:#666;background-size:cover;background-position:50%}.Blue .Border.Theme:after{background-color:#09f}.Orange .Border.Theme:after,.Yellow .Border.Theme:after{background-color:#fa0}.Red .Border.Theme:after{background-color:#d01}.Purple .Border.Theme:after{background-color:#c3c}.Silver .Border.Theme:after,.White .Border.Theme:after{background-color:#ccc}.Gold .Border.Theme:after{background-color:#c96}[data-theme] .Border.Theme{animation:fadeIn .5s linear 1s;animation-fill-mode:forwards}.Border:after{content:"";position:absolute;left:2em;right:2em;top:2em;bottom:2em;border-radius:8em}.Back .Border:after{box-shadow:none}.Image .Highlight{position:absolute;left:2em;right:2em;top:2em;bottom:2em;border-radius:8em;background-color:transparent;background-image:linear-gradient(180deg,hsla(0,0%,100%,.25) 0,hsla(0,0%,100%,0));opacity:1;transition:opacity .1s linear}.Image:hover .Image .Highlight{opacity:0}.Confetti{left:2em;right:2em;top:2em;bottom:2em;width:calc(100% - 4em);height:calc(100% - 4em);border-radius:8em;overflow:hidden}.Confetti,.Sticker{position:absolute;pointer-events:none}.Sticker{opacity:0;-webkit-user-select:none;-ms-user-select:none;user-select:none;-webkit-user-drag:none;user-drag:none}.Sticker:after,.Sticker:before{content:"";position:absolute;left:0;top:0;width:100%;height:100%;background-size:contain;background-position:50%;background-repeat:no-repeat}.Sticker:before{filter:brightness(0);transform:translateY(1px);opacity:.15}.Image:hover .Sticker:before{transform:translateY(0);filter:brightness(0) drop-shadow(0 1px 0 rgba(0,0,0,.5))}.Image:hover .Sticker:after{transform:translateZ(1px)}.Sticker.Community{width:17em;height:17em;left:5em;top:5em;transition:opacity .5s linear .5s}[data-sticker] .Sticker.Community{opacity:1;pointer-events:auto;cursor:pointer}.Sticker.Face,.Sticker.Theme{left:50%;top:46em;width:60em;height:15em;margin-left:-30em;transition:opacity .5s linear 2s}[data-theme] .Sticker.Face,[data-theme] .Sticker.Theme{opacity:1;pointer-events:auto;cursor:pointer}.Sticker.Face,.Sticker.Face.Alt,.Sticker.Theme.Alt{top:44em;width:40em;height:20em;margin-left:-20em}[data-theme] .Sticker.Face{opacity:0;pointer-events:none;cursor:pointer}.Sticker.Face.On{opacity:1;pointer-events:auto;cursor:pointer}@keyframes fadeIn{0%{opacity:0}to{opacity:1}}@keyframes fadeOut{0%{opacity:1}to{opacity:0}}.Image.Contractor,.Image.Internal,.Image.Legacy,.Image.Temporary{width:115em;height:180em;border-radius:5em;border-color:#fff;font-family:Arial,Helvetica,sans-serif;box-shadow:0 10em 20em -12em rgba(0,0,0,.5)!important;transform:perspective(500em)}.Image.Contractor .Side,.Image.Internal .Side,.Image.Legacy .Side,.Image.Temporary .Side{display:none}.Image.Contractor .Back,.Image.Contractor .Front,.Image.Internal .Back,.Image.Internal .Front,.Image.Legacy .Back,.Image.Legacy .Front,.Image.Temporary .Back,.Image.Temporary .Front{border-radius:5em}.Image.Contractor .Back:after,.Image.Contractor .Front:after,.Image.Internal .Back:after,.Image.Internal .Front:after,.Image.Legacy .Back:after,.Image.Legacy .Front:after,.Image.Temporary .Back:after,.Image.Temporary .Front:after{display:none}.Image.Contractor .Back,.Image.Internal .Back,.Image.Legacy .Back,.Image.Temporary .Back{transform:translateZ(-2.5em)}.Image.Contractor .Border,.Image.Contractor .Card,.Image.Contractor .Confetti,.Image.Contractor .Glare,.Image.Contractor .Highlight,.Image.Internal .Border,.Image.Internal .Card,.Image.Internal .Confetti,.Image.Internal .Glare,.Image.Internal .Highlight,.Image.Legacy .Border,.Image.Legacy .Card,.Image.Legacy .Confetti,.Image.Legacy .Glare,.Image.Legacy .Highlight,.Image.Temporary .Border,.Image.Temporary .Card,.Image.Temporary .Confetti,.Image.Temporary .Glare,.Image.Temporary .Highlight{-webkit-mask-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjMwcHgiIGhlaWdodD0iMzYwcHgiIHZpZXdCb3g9IjAgMCAyMzAgMzYwIj48ZGVmcy8+PGcgaWQ9IkxheWVyXzIiPjxnIHRyYW5zZm9ybT0ibWF0cml4KCAxLCAwLCAwLCAxLCAwLDApICI+PGc+PGc+PHBhdGggZmlsbD0iIzAwMDAwMCIgc3Ryb2tlPSJub25lIiBkPSJNIDIzMCAwTCAwIDAgMCAzNjAgMjMwIDM2MCAyMzAgME0gMTQ0IDIyUSAxNDYuNDUgMjIgMTQ4LjIgMjMuNzUgMTUwIDI1LjU1IDE1MCAyOCAxNTAgMzAuNDUgMTQ4LjIgMzIuMiAxNDYuNDUgMzQgMTQ0IDM0TCA4NiAzNFEgODMuNTUgMzQgODEuNzUgMzIuMiA4MCAzMC40NSA4MCAyOCA4MCAyNS41NSA4MS43NSAyMy43NSA4My41NSAyMiA4NiAyMkwgMTQ0IDIyIFoiLz48L2c+PC9nPjwvZz48L2c+PC9zdmc+);mask-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjMwcHgiIGhlaWdodD0iMzYwcHgiIHZpZXdCb3g9IjAgMCAyMzAgMzYwIj48ZGVmcy8+PGcgaWQ9IkxheWVyXzIiPjxnIHRyYW5zZm9ybT0ibWF0cml4KCAxLCAwLCAwLCAxLCAwLDApICI+PGc+PGc+PHBhdGggZmlsbD0iIzAwMDAwMCIgc3Ryb2tlPSJub25lIiBkPSJNIDIzMCAwTCAwIDAgMCAzNjAgMjMwIDM2MCAyMzAgME0gMTQ0IDIyUSAxNDYuNDUgMjIgMTQ4LjIgMjMuNzUgMTUwIDI1LjU1IDE1MCAyOCAxNTAgMzAuNDUgMTQ4LjIgMzIuMiAxNDYuNDUgMzQgMTQ0IDM0TCA4NiAzNFEgODMuNTUgMzQgODEuNzUgMzIuMiA4MCAzMC40NSA4MCAyOCA4MCAyNS41NSA4MS43NSAyMy43NSA4My41NSAyMiA4NiAyMkwgMTQ0IDIyIFoiLz48L2c+PC9nPjwvZz48L2c+PC9zdmc+);-webkit-mask-size:115em 180em;mask-size:115em 180em}.Image.Contractor .Card,.Image.Internal .Card,.Image.Legacy .Card,.Image.Temporary .Card{left:1em;right:1em;top:1em;bottom:1em;border-radius:4em;background-color:#6eb}.Image.Contractor .Photo,.Image.Internal .Photo,.Image.Legacy .Photo,.Image.Temporary .Photo{left:27.5em;right:27.5em;top:38em;bottom:auto;height:80em;box-shadow:none}.Image.Contractor .Photo:after,.Image.Contractor .Photo:before,.Image.Internal .Photo:after,.Image.Internal .Photo:before,.Image.Legacy .Photo:after,.Image.Legacy .Photo:before,.Image.Temporary .Photo:after,.Image.Temporary .Photo:before{display:none}.Image.Contractor .CustomPhoto,.Image.Internal .CustomPhoto,.Image.Legacy .CustomPhoto,.Image.Temporary .CustomPhoto{top:39em;left:27.5em;right:27.5em;height:80em}.Image.Contractor .FirstName,.Image.Internal .FirstName,.Image.Legacy .FirstName,.Image.Temporary .FirstName{position:absolute;left:0;right:0;top:8em;bottom:auto;height:1.25em;font-size:15em;line-height:1.25;color:#000;font-weight:700;transform:none;backface-visibility:hidden}.Image.Contractor .LastName,.Image.Internal .LastName,.Image.Legacy .LastName,.Image.Temporary .LastName{position:absolute;display:block;left:0;right:0;top:11.5em;bottom:auto;height:1.25em;font-size:12em;line-height:1.25;color:#000;transform:none;backface-visibility:hidden}.Image.Contractor .Alias,.Image.Contractor .Username,.Image.Internal .Alias,.Image.Internal .Username,.Image.Legacy .Alias,.Image.Legacy .Username,.Image.Temporary .Alias,.Image.Temporary .Username{position:absolute;left:0;right:0;top:1.33333em;bottom:auto;height:1.25em;font-family:Arial,Helvetica,sans-serif;font-size:15em;line-height:1;color:#000;letter-spacing:0;transform:scaleX(1)}.Image.Contractor .At,.Image.Internal .At,.Image.Legacy .At,.Image.Temporary .At{display:none}.Image.Contractor .Hole,.Image.Internal .Hole,.Image.Legacy .Hole,.Image.Temporary .Hole{left:40em;right:40em;top:11em;bottom:auto;height:6em;border-radius:3em;border:none;box-shadow:0 0 0 1px hsla(0,0%,100%,.5)!important}.Image.Contractor .Hole:before,.Image.Internal .Hole:before,.Image.Legacy .Hole:before,.Image.Temporary .Hole:before{box-shadow:inset 0 1em 10em rgba(0,0,0,.35)}.Image.Contractor .Hole:after,.Image.Internal .Hole:after,.Image.Legacy .Hole:after,.Image.Temporary .Hole:after{display:none}.Image.Contractor .Border,.Image.Internal .Border,.Image.Legacy .Border,.Image.Temporary .Border{border-radius:5em;background-color:#fff!important;background-image:none!important}.Image.Contractor .Border:after,.Image.Internal .Border:after,.Image.Legacy .Border:after,.Image.Temporary .Border:after{background-color:#fff!important}.Image.Contractor .Highlight,.Image.Internal .Highlight,.Image.Legacy .Highlight,.Image.Temporary .Highlight{left:0;right:0;top:0;bottom:0;border-radius:5em}.Image.Contractor .Sticker.Theme,.Image.Contractor .Sticker.Theme.Alt,.Image.Internal .Sticker.Theme,.Image.Internal .Sticker.Theme.Alt,.Image.Legacy .Sticker.Theme,.Image.Legacy .Sticker.Theme.Alt,.Image.Temporary .Sticker.Theme,.Image.Temporary .Sticker.Theme.Alt{top:auto;bottom:5em}.Image.Contractor .Confetti,.Image.Internal .Confetti,.Image.Legacy .Confetti,.Image.Temporary .Confetti{left:0;right:0;top:0;bottom:0;border-radius:5em;width:100%;height:100%}.Image.Legacy .Card{background-color:#b8e1eb}.Image.Legacy.Orange .Card,.Image.Legacy.Yellow .Card{box-shadow:inset 0 0 0 4em #fa0}.Image.Legacy.Red .Card{box-shadow:inset 0 0 0 4em #d01}.Image.Legacy.Purple .Card{box-shadow:inset 0 0 0 4em #c3c}.Image.Legacy.Silver .Card{box-shadow:inset 0 0 0 4em #111}.Image.Legacy.Gold .Card{box-shadow:inset 0 0 0 4em #c96}.Image.Contractor .Card{background-color:#ff9}.Image.Temporary .Card{background-color:#6eb}.Image.Internal .Card{background-color:#fafafa}.Image .Glare{width:auto!important;height:auto!important;left:2em!important;right:2em!important;top:2em!important;bottom:2em!important;border-radius:8em;opacity:.75;overflow:hidden}.Image .Glare,.Image .InnerGlare{position:absolute;pointer-events:none}.Image .InnerGlare{top:50%;left:50%;background-image:linear-gradient(0deg,hsla(0,0%,100%,0),#fff);transform:rotate(180deg) translate(-50%,-50%);transform-origin:0 0;width:250em!important;height:250em!important;opacity:0;display:none}.Image:hover .Glare,.Image:hover .InnerGlare{display:block}.Image.Contractor .Glare,.Image.Internal .Glare,.Image.Legacy .Glare,.Image.Temporary .Glare{left:0!important;right:0!important;top:0!important;bottom:0!important;border-radius:5em}@font-face{font-family:HyperImage Amazon Ember;src:url(https://m.media-amazon.com/images/G/01/ADT/Web/hyperbadge/fonts/amazonember_rg.woff2) format("woff2"),url(https://m.media-amazon.com/images/G/01/ADT/Web/hyperbadge/fonts/amazonember_rg.woff) format("woff")}@font-face{font-family:HyperImage Amazon Ember Lite;src:url(https://m.media-amazon.com/images/G/01/ADT/Web/hyperbadge/fonts/amazonember_lt.woff2) format("woff2"),url(https://m.media-amazon.com/images/G/01/ADT/Web/hyperbadge/fonts/amazonember_lt.woff) format("woff")}.HyperImageTemplate{position:relative;display:inline-block;vertical-align:text-top;font-family:HyperImage Amazon Ember,Helvetica,Arial,sans-serif;line-height:0;font-size:2px;text-align:center;margin:5px}.HyperImageTemplate.Default,.HyperImageTemplate.Defaultem,.HyperImageTemplate.Defaultpx{width:90em}.HyperImageTemplate.Default.Contractor,.HyperImageTemplate.Default.Internal,.HyperImageTemplate.Default.Legacy,.HyperImageTemplate.Default.Temporary,.HyperImageTemplate.Defaultem.Contractor,.HyperImageTemplate.Defaultem.Internal,.HyperImageTemplate.Defaultem.Legacy,.HyperImageTemplate.Defaultem.Temporary,.HyperImageTemplate.Defaultpx.Contractor,.HyperImageTemplate.Defaultpx.Internal,.HyperImageTemplate.Defaultpx.Legacy,.HyperImageTemplate.Defaultpx.Temporary{width:115em}.Details{position:relative;text-align:center;-webkit-user-select:text;-ms-user-select:text;user-select:text;font-size:10em;line-height:1.2;width:100%;margin-top:.5em;margin-bottom:10px}.Details>div{opacity:.75}.Details .Contact,.Details>div:first-child{opacity:1}.FullName{font-size:100%}.FullName._0{display:none}.Pronouns{font-size:75%}.Pronouns._0{display:none}.JobTitle{font-size:75%}.JobTitle._0{display:none}.Contact{font-size:0}.Contact .Chime._0,.Contact .Email._0,.Contact .Slack._0{display:none}.Contact img{margin-left:5px;margin-right:5px;margin-top:5px;-webkit-user-drag:none;user-drag:none;transition:filter .1s linear,transform .1s ease-out;filter:none;transform:scale(1)}.Contact img:hover{filter:drop-shadow(0 2px 2px rgba(0,0,0,.1));transform:scale(1.25)}.Contact img:active{filter:none;transform:scale(1.125);animation:none}.HyperImage{display:block;position:relative;margin:0 auto;font-size:inherit;line-height:0!important;width:90em;height:200em;-webkit-user-select:none;-ms-user-select:none;user-select:none;-webkit-user-drag:none;transition:transform .1s ease-out}.HyperImageTemplate.Contractor .HyperImage,.HyperImageTemplate.Internal .HyperImage,.HyperImageTemplate.Legacy .HyperImage,.HyperImageTemplate.Temporary .HyperImage{width:115em;height:180em}.HyperImage:active .xy_-5_-10:hover~.Image{transform:perspective(750em) rotateX(18deg) rotateY(-18deg)}.HyperImage:active .xy_-5_-10:hover~.Image .InnerGlare{opacity:1;transform:rotate(-27deg) translate(-50%,-50%)}.HyperImage:active .xy_-4_-10:hover~.Image{transform:perspective(750em) rotateX(18deg) rotateY(-15deg)}.HyperImage:active .xy_-4_-10:hover~.Image .InnerGlare{opacity:1;transform:rotate(-22deg) translate(-50%,-50%)}.HyperImage:active .xy_-3_-10:hover~.Image{transform:perspective(750em) rotateX(18deg) rotateY(-11deg)}.HyperImage:active .xy_-3_-10:hover~.Image .InnerGlare{opacity:1;transform:rotate(-17deg) translate(-50%,-50%)}.HyperImage:active .xy_-2_-10:hover~.Image{transform:perspective(750em) rotateX(18deg) rotateY(-8deg)}.HyperImage:active .xy_-2_-10:hover~.Image .InnerGlare{opacity:1;transform:rotate(-12deg) translate(-50%,-50%)}.HyperImage:active .xy_-1_-10:hover~.Image{transform:perspective(750em) rotateX(18deg) rotateY(-4deg)}.HyperImage:active .xy_-1_-10:hover~.Image .InnerGlare{opacity:1;transform:rotate(-6deg) translate(-50%,-50%);transition:opacity .1s linear}.HyperImage:active .xy_1_-10:hover~.Image{transform:perspective(750em) rotateX(18deg) rotateY(3deg)}.HyperImage:active .xy_1_-10:hover~.Image .InnerGlare{opacity:1;transform:rotate(5deg) translate(-50%,-50%);transition:opacity .1s linear}.HyperImage:active .xy_2_-10:hover~.Image{transform:perspective(750em) rotateX(18deg) rotateY(7deg)}.HyperImage:active .xy_2_-10:hover~.Image .InnerGlare{opacity:1;transform:rotate(11deg) translate(-50%,-50%)}.HyperImage:active .xy_3_-10:hover~.Image{transform:perspective(750em) rotateX(18deg) rotateY(10deg)}.HyperImage:active .xy_3_-10:hover~.Image .InnerGlare{opacity:1;transform:rotate(16deg) translate(-50%,-50%)}.HyperImage:active .xy_4_-10:hover~.Image{transform:perspective(750em) rotateX(18deg) rotateY(14deg)}.HyperImage:active .xy_4_-10:hover~.Image .InnerGlare{opacity:1;transform:rotate(21deg) translate(-50%,-50%)}.HyperImage:active .xy_5_-10:hover~.Image{transform:perspective(750em) rotateX(18deg) rotateY(18deg)}.HyperImage:active .xy_5_-10:hover~.Image .InnerGlare{opacity:1;transform:rotate(26deg) translate(-50%,-50%)}
+    </style>
+    <link rel="stylesheet" href="assets/hyperbadge.css" />
+    <style>
+      /* Ensure coordinate grid is visible and badge overlays it */
+      .HyperImage:active,.HyperImage:hover{transform:scale3d(1.05,1.05,1.05);outline:none;z-index:1}
+      .HyperImage:active .Coordinate,.HyperImage:hover .Coordinate{display:inline-block}
+      .HyperImage .Coordinate{position:relative;display:none;width:10%;height:5%;z-index:1}
+      .HyperImage .Coordinate:hover~.Image .Highlight{opacity:0}
+      .HyperImage.Flat:hover{transform:none}
+      .HyperImage.Flat .Image:hover .Highlight{opacity:1}
+      .HyperImage.Flat .Coordinate{pointer-events:none;display:none!important}
+      .HyperImage .Image{position:absolute;font-size:inherit;top:0;left:0;margin:0;background-color:transparent;font-weight:400;padding:0;transition:opacity .25s linear,transform .1s ease-out;z-index:0}
+      .HyperImage .Image .Card{padding:0;box-shadow:none}
+      .HyperImage .Image .Glare{opacity:.85}
+      .HyperImage .Image .Glare .InnerGlare{
+        background:
+          radial-gradient(
+            circle at var(--gx, 50%) var(--gy, 50%),
+            rgba(255,255,255, var(--ga, 0)) 0%,
+            rgba(255,255,255, calc(var(--ga, 0) * 0.55)) var(--gr, 22%),
+            rgba(255,255,255, 0) calc(var(--gr, 22%) + 24%)
+          );
+        transition: opacity .1s linear, transform .1s ease-out;
+        display:block;
+        opacity: 1 !important;
+      }
+      @media (prefers-reduced-motion:reduce){.HyperImage .Coordinate{pointer-events:none;display:none}}
+      .HyperImage, .HyperImageTemplate, .Image, .Alias, .Username {
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+      }
+
+      .HyperImage .Image .Card{ background-color: #000 !important; overflow: hidden !important; border-radius: 8em !important; }
+      .HyperImage .Image .Border{
+        background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2), var(--gradient-3)) !important;
+        background-size: 200% 200%;
+        animation: gradient-shift 8s ease infinite;
+      }
+      .HyperImage .Image .Glare{ overflow: hidden !important; border-radius: 8em !important; }
+      .HyperImage .Image .InnerGlare{ width: 600% !important; height: 600% !important; }
+      .HyperImage .Back{ transform: translateZ(-30em) !important; }
+      .HyperImage .Sides .Left, .HyperImage .Sides .Right{ width: 30em !important; }
+      .HyperImage .Sides .Top, .HyperImage .Sides .Bottom{ height: 30em !important; }
+      .hero-image-container .HyperImageTemplate{ width: 100% !important; height: 100% !important; display:block; }
+      .hero-image-container .HyperImage{ width: 100% !important; height: 100% !important; }
+      .hero-image-container .HyperImage .Image{ width: 100% !important; height: 100% !important; }
+      .HyperImage .Image .Card,
+      .HyperImage .Image .Confetti,
+      .HyperImage .Image .Glare,
+      .HyperImage .Image .Highlight,
+      .HyperImage .Image .Border{
+        -webkit-mask-image: none !important;
+        mask-image: none !important;
+        -webkit-mask-size: initial !important;
+        mask-size: initial !important;
+      }
+      .HyperImage .Hole, .HyperImage .Hole:before, .HyperImage .Hole:after{ display:none !important; }
+      .HyperImage .Photo{ left:0 !important; right:0 !important; top:0 !important; bottom:0 !important; height: auto !important; border-radius: 8em !important; }
+      .HyperImage .Photo{ filter: none !important; mix-blend-mode: normal !important; }
+      .HyperImage .Image .Highlight{ background: none !important; display: none !important; }
+      .HyperImage .Image.Gray .Photo:after{
+        background-image:linear-gradient(180deg,#000 0,rgba(0,0,0,.986111) 1em,rgba(0,0,0,.944444) 2em,rgba(0,0,0,.875) 3em,rgba(0,0,0,.777778) 4em,rgba(0,0,0,.652778) 5em,rgba(0,0,0,.5) 6em,rgba(0,0,0,.347222) 7em,rgba(0,0,0,.222222) 8em,rgba(0,0,0,.125) 9em,rgba(0,0,0,.0555556) 10em,rgba(0,0,0,.0138889) 11em,transparent 12em),
+                         linear-gradient(0deg,#000 0,rgba(0,0,0,.840278) 1em,rgba(0,0,0,.694444) 2em,rgba(0,0,0,.5625) 3em,rgba(0,0,0,.444444) 4em,rgba(0,0,0,.340278) 5em,rgba(0,0,0,.25) 6em,rgba(0,0,0,.173611) 7em,rgba(0,0,0,.111111) 8em,rgba(0,0,0,.0625) 9em,rgba(0,0,0,.0277778) 10em,rgba(0,0,0,.00694444) 11em,transparent 12em) !important;
+      }
     </style>
 </head>
 <body class="smooth-scroll">
@@ -190,6 +231,92 @@
 
     <script type="text/babel" data-presets="env,react">
         const { useState, useEffect } = React;
+
+        function HyperImage({ photoUrl = 'photo.jpeg', theme = 'Gray' }) {
+            const hbRef = React.useRef(null);
+            const badgeRef = React.useRef(null);
+            const glareRef = React.useRef(null);
+            const pressedRef = React.useRef(false);
+
+            const applyTransform = React.useCallback((e) => {
+                if (!badgeRef.current || !hbRef.current) return;
+                const rect = hbRef.current.getBoundingClientRect();
+                const px = (e.clientX - rect.left) / rect.width;
+                const py = (e.clientY - rect.top) / rect.height;
+                const tilt = 18;
+
+                const baseRx = (py - 0.5) * 36;
+                const rx = pressedRef.current ? -baseRx : baseRx;
+                const ry = (0.5 - px) * 36;
+                badgeRef.current.style.transform = `perspective(750em) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
+                
+                // glare
+                const dx = px - 0.5, dy = py - 0.5;
+                const m = Math.min(1, (Math.abs(rx) + Math.abs(ry)) / (tilt * 2));
+                const angle = Math.atan2(dy, dx) * 180 / Math.PI + 90;
+                
+                const cpx = Math.min(0.8, Math.max(0.2, px));
+                const cpy = Math.min(0.8, Math.max(0.2, py));
+                const gx = (cpx * 100).toFixed(1) + '%';
+                const gy = (cpy * 100).toFixed(1) + '%';
+                const ga = Math.min(0.7, 0.22 + Math.pow(m, 1.2) * 0.65);
+                const minRadius = 24;
+                const grVal = Math.max(minRadius, 12 + (1 - Math.min(1, m * 1.5)) * 20);
+                const gr = grVal.toFixed(1) + '%';
+                const el = badgeRef.current;
+                el.style.setProperty('--gx', gx);
+                el.style.setProperty('--gy', gy);
+                el.style.setProperty('--ga', ga.toFixed(2));
+                el.style.setProperty('--gr', gr);
+            }, []);
+
+            const onEnter = (e) => applyTransform(e);
+            const onMove = (e) => applyTransform(e);
+            const onLeave = () => {
+                if (!badgeRef.current) return;
+                badgeRef.current.style.transform = 'perspective(750em)';
+                badgeRef.current.style.setProperty('--ga', '0');
+            };
+            const onDown = (e) => { pressedRef.current = true; applyTransform(e); };
+            const onUp = (e) => { pressedRef.current = false; applyTransform(e); };
+
+            return (
+                <div className="HyperImageTemplate Default">
+                    <div
+                        className="HyperImage"
+                        tabIndex="-1"
+                        ref={hbRef}
+                        onMouseEnter={onEnter}
+                        onMouseMove={onMove}
+                        onMouseLeave={onLeave}
+                        onMouseDown={onDown}
+                        onMouseUp={onUp}
+                    >
+                        {/* coordinate grid removed; JS handles tilt/glare */}
+                        <div className={`Image ${theme}`} ref={badgeRef}>
+                            <div className="Back">
+                                <div className="Border"></div>
+                                <div className="Card"></div>
+                                <div className="Glare"><div className="InnerGlare"></div></div>
+                            </div>
+                            <div className="Front">
+                                <div className="Border"></div>
+                                <div className="Card">
+                                    <div className="Photo On" style={{ backgroundImage: `url(${photoUrl})` }}></div>
+                                </div>
+                                <div className="Glare"><div className="InnerGlare"></div></div>
+                            </div>
+                            <div className="Sides">
+                                <div className="Side Left"></div>
+                                <div className="Side Right"></div>
+                                <div className="Side Top"></div>
+                                <div className="Side Bottom"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
 
         function App() {
             const [activeSection, setActiveSection] = useState('home');
@@ -358,18 +485,8 @@
 
                                 {/* Photo Container*/}
                                 <div className="flex-shrink-0 order-first lg:order-last">
-                                    <div className="hero-image-container parallax-layer" style={{ transform: `translate(${-mousePosition.x * 8}px, ${-mousePosition.y * 8}px)` }}>
-                                        <div className="hero-image-wrapper">
-                                            <img
-                                                src="photo.jpeg"
-                                                alt="Suyash - Engineer & Aspiring Researcher"
-                                                className="hero-image"
-                                                loading="eager"
-                                                decoding="async"
-                                                fetchpriority="high"
-                                            />
-                                            <div className="hero-image-overlay"></div>
-                                        </div>
+                                    <div className="hero-image-container">
+                                        <HyperImage photoUrl="photo.jpeg" />
 
                                         <div
                                             className="absolute -top-4 -right-4 w-20 h-20 gradient-bg opacity-20 rounded-full blur-xl parallax-layer"
@@ -761,4 +878,3 @@
     </script>
 </body>
 </html>
-
